@@ -1,4 +1,5 @@
 // Minimal JS: validation, localStorage, conditional rendering, template literals, quotes loop
+// Added in commit: Add JavaScript interactivity (script.js) — validation, localStorage, rendering
 const STORAGE_KEY = 'userProfile_v1';
 const QUOTES = [
   "Believe you can and you're halfway there.",
