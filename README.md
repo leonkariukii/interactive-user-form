@@ -1,3 +1,5 @@
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://leonkariukii.github.io/interactive-user-form/)
+
 Interactive Form — Minimal static site
 
 Files:
