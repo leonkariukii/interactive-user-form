@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container" id="main-content">
+    <header>
+      <h1>Welcome</h1>
+      <p class="lead">Enter your name and age to see personalized content.</p>
+    </header>
+
+    <section id="user-form" aria-labelledby="form-heading">
+      <h2 id="form-heading">Your details</h2>
+      <form id="profile-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" inputmode="numeric" min="0" max="130" required />
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="submit-btn">Submit</button>
+          <button type="button" id="clear-btn">Clear</button>
+        </div>
+
+        <div id="error" role="alert" aria-live="assertive" class="sr-only"></div>
+      </form>
+    </section>
+
+    <aside id="outputs">
+      <section id="greeting" aria-live="polite" class="card">
+        <!-- personalized greeting inserted here -->
+      </section>
+
+      <section id="months" class="card">
+        <!-- age-in-months inserted here -->
+      </section>
+
+      <section id="adult-section" class="card hidden" aria-hidden="true">
+        <!-- adult content revealed when age >= 18 -->
+      </section>
+
+      <section id="quotes" class="card">
+        <h2>Motivational Quotes</h2>
+        <ul id="quotes-list"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
