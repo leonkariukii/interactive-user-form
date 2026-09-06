@@ -39,7 +39,7 @@ input[type="text"],input[type="number"]{
   border:1px solid #d1d5db;
   font-size:1rem;
 }
-input:focus{outline:3px solid rgba(37,99,235,0.12);border-color:var(--primary)}
+input:focus{outline:3px solid rgba(224, 228, 13, 0.12);border-color:var(--primary)}
 .actions{display:flex;gap:8px}
 button{
   background:var(--primary);
