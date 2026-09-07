@@ -19,6 +19,8 @@ const months = qs('months');
 const adultSection = qs('adult-section');
 const quotesList = qs('quotes-list');
 const clearBtn = qs('clear-btn');
+const registrationMessage = qs('registration-message');
+const registeredUserDetails = qs('registered-user-details');
 
 function validate(name, ageRaw){
   const errs = [];
@@ -50,6 +52,26 @@ function loadProfile(){
     return JSON.parse(raw);
   }catch(e){return null}
 }
+
+const checkRegisteredUser = () => {
+  const profile = loadProfile();
+
+  if(profile){
+    console.log('Registered user details:');
+    console.table(profile);
+    registrationMessage.textContent = 'This user is registered.';
+    registeredUserDetails.innerHTML = `
+      <dt>Name</dt><dd>${escapeHtml(profile.name)}</dd>
+      <dt>Age</dt><dd>${profile.age}</dd>
+    `;
+    return true;
+  }
+
+  console.log('No registered user found.');
+  registrationMessage.textContent = 'No registered user found.';
+  registeredUserDetails.innerHTML = '';
+  return false;
+};
 
 function calcMonths(age){ return age * 12; }
 
@@ -111,6 +133,7 @@ form.addEventListener('submit', function(e){
 
   const profile = {name: result.name, age: result.age, savedAt: (new Date()).toISOString()};
   saveProfile(profile);
+  checkRegisteredUser();
   renderAll(profile);
 });
 
@@ -122,15 +145,18 @@ clearBtn.addEventListener('click', function(){
   months.innerHTML = '';
   adultSection.classList.add('hidden');
   quotesList.innerHTML = '';
+  checkRegisteredUser();
 });
 
 // load on start
 document.addEventListener('DOMContentLoaded', function(){
   renderQuotes();
   const p = loadProfile();
+  checkRegisteredUser();
   if(p){
     nameInput.value = p.name||'';
     ageInput.value = p.age!==undefined ? p.age : '';
     renderAll(p);
   }
 });
+// Single fruit strings
